@@ -1,4 +1,4 @@
-= Kaminari {<img src="https://travis-ci.org/amatsuda/kaminari.svg"/>}[http://travis-ci.org/amatsuda/kaminari] {<img src="https://img.shields.io/codeclimate/github/amatsuda/kaminari.svg" />}[https://codeclimate.com/github/amatsuda/kaminari] {<img src="https://inch-pages.github.io/github/amatsuda/kaminari.svg" alt="Inline docs" />}[http://inch-pages.github.io/github/amatsuda/kaminari]
+= Kaminari {<img src="https://travis-ci.org/amatsuda/kaminari.svg"/>}[http://travis-ci.org/amatsuda/kaminari] {<img src="https://img.shields.io/codeclimate/github/amatsuda/kaminari.svg" />}[https://codeclimate.com/github/amatsuda/kaminari] {<img src="http://inch-ci.org/github/amatsuda/kaminari.svg" alt="Inline docs" />}[http://inch-ci.org/github/amatsuda/kaminari]
 
 A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
 
@@ -65,7 +65,7 @@ Then bundle:
 
   Keep in mind that +per+ utilizes internally +limit+ and so it will override any +limit+ that was set previously
     User.count                  # => 1000
-    a = User.limit(5).count     # => 5
+    a = User.limit(5); a.count  # => 5
     b = a.page(1).per(20).size  # => 20
 
 * the +padding+ scope
@@ -270,6 +270,14 @@ Because of the +page+ parameter and Rails 3 routing, you can easily generate SEO
     resources :my_resources do
       get 'page/:page', :action => :index, :on => :collection
     end
+
+If you are using Rails 4 or later, you can simplify route definitions by using `concern`:
+
+    concern :paginatable do
+      get '(page/:page)', :action => :index, :on => :collection, :as => ''
+    end
+
+    resources :my_resources, :concerns => :paginatable
 
 This will create URLs like <tt>/my_resources/page/33</tt> instead of <tt>/my_resources?page=33</tt>. This is now a friendly URL, but it also has other added benefits...
 

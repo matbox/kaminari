@@ -83,6 +83,11 @@ if defined? ActiveRecord
             subject { model_class.page(1).per(nil) }
             it { should have(model_class.default_per_page).users }
           end
+
+          context "page 1 per 0" do
+            subject { model_class.page(1).per(0) }
+            it { should have(0).users }
+          end
         end
 
         describe '#padding' do
@@ -115,9 +120,11 @@ if defined? ActiveRecord
             its(:total_pages) { should == 1 }
           end
 
-          context 'per 0 (using default)' do
+          context 'per 0' do
             subject { model_class.page(50).per(0) }
-            its(:total_pages) { should == 4 }
+            it "raises Kaminari::ZeroPerPageOperation" do
+              expect { subject.total_pages }.to raise_error(Kaminari::ZeroPerPageOperation)
+            end
           end
 
           context 'per -1 (using default)' do
@@ -157,6 +164,13 @@ if defined? ActiveRecord
         end
 
         describe '#current_page' do
+          context 'any page, per 0' do
+            subject { model_class.page.per(0) }
+            it "raises Kaminari::ZeroPerPageOperation" do
+              expect { subject.current_page }.to raise_error(Kaminari::ZeroPerPageOperation)
+            end
+          end
+
           context 'page 1' do
             subject { model_class.page }
             its(:current_page) { should == 1 }
@@ -186,9 +200,14 @@ if defined? ActiveRecord
             its(:prev_page) { should be_nil }
           end
 
+          context 'page 3' do
+            subject { model_class.page(3) }
+            its(:prev_page) { should == 2 }
+          end
+
           context 'page 5' do
             subject { model_class.page(5) }
-            its(:prev_page) { should == 4 }
+            its(:prev_page) { should be_nil }
           end
         end
 
@@ -210,8 +229,13 @@ if defined? ActiveRecord
             its(:last_page?) { should == true }
           end
 
-          context 'not on last page' do
+          context 'within range' do
             subject { model_class.page(1).per(10) }
+            its(:last_page?) { should == false }
+          end
+
+          context 'out of range' do
+            subject { model_class.page(11).per(10) }
             its(:last_page?) { should == false }
           end
         end

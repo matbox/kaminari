@@ -1,5 +1,10 @@
 module Kaminari
   module MongoidCriteriaMethods
+    def initialize_copy(other) #:nodoc:
+      @total_count = nil
+      super
+    end
+
     def entry_name
       model_name.human.downcase
     end
@@ -14,12 +19,12 @@ module Kaminari
 
     def total_count #:nodoc:
       @total_count ||= if embedded?
-        unpage.count
+        unpage.size
       else
-        if options[:max_scan] && options[:max_scan] < count
+        if options[:max_scan] && options[:max_scan] < size
           options[:max_scan]
         else
-          count
+          size
         end
       end
     end
