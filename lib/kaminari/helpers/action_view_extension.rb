@@ -17,12 +17,16 @@ module Kaminari
     def paginate(scope, options = {}, &block)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> FETCH_HEAD
       if @current_page
         cpage = @current_page
       else
         cpage = scope.current_page
       end
       paginator = Kaminari::Helpers::Paginator.new self, options.reverse_merge(:current_page => cpage, :total_pages => scope.total_pages, :per_page => scope.limit_value, :remote => false)
+<<<<<<< HEAD
 =======
       options[:total_pages] ||= scope.total_pages
 
@@ -32,6 +36,8 @@ module Kaminari
       options[:total_pages] ||= scope.total_pages
 
       paginator = Kaminari::Helpers::Paginator.new(self, options.reverse_merge(:current_page => scope.current_page, :per_page => scope.limit_value, :remote => false))
+>>>>>>> FETCH_HEAD
+=======
 >>>>>>> FETCH_HEAD
       paginator.to_s
     end

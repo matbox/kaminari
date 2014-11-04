@@ -52,6 +52,9 @@ module Kaminari
     def next_page
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> FETCH_HEAD
       if @current_page
         cpage = @current_page
       else
@@ -59,11 +62,14 @@ module Kaminari
       end
       
       cpage + 1 unless last_page?
+<<<<<<< HEAD
 =======
       current_page + 1 unless last_page? || out_of_range?
 >>>>>>> FETCH_HEAD
 =======
       current_page + 1 unless last_page? || out_of_range?
+>>>>>>> FETCH_HEAD
+=======
 >>>>>>> FETCH_HEAD
     end
 
@@ -71,6 +77,9 @@ module Kaminari
     def prev_page
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> FETCH_HEAD
       if @current_page
         cpage = @current_page
       else
@@ -78,11 +87,14 @@ module Kaminari
       end
       
       cpage - 1 unless first_page?
+<<<<<<< HEAD
 =======
       current_page - 1 unless first_page? || out_of_range?
 >>>>>>> FETCH_HEAD
 =======
       current_page - 1 unless first_page? || out_of_range?
+>>>>>>> FETCH_HEAD
+=======
 >>>>>>> FETCH_HEAD
     end
 
@@ -101,6 +113,9 @@ module Kaminari
     def last_page?
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> FETCH_HEAD
       if @current_page
         cpage = @current_page
       else
@@ -108,11 +123,14 @@ module Kaminari
       end
       
       cpage >= total_pages
+<<<<<<< HEAD
 =======
       current_page == total_pages
 >>>>>>> FETCH_HEAD
 =======
       current_page == total_pages
+>>>>>>> FETCH_HEAD
+=======
 >>>>>>> FETCH_HEAD
     end
 
