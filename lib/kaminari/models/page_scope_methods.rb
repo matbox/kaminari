@@ -51,6 +51,7 @@ module Kaminari
     # Next page number in the collection
     def next_page
 <<<<<<< HEAD
+<<<<<<< HEAD
       if @current_page
         cpage = @current_page
       else
@@ -61,10 +62,14 @@ module Kaminari
 =======
       current_page + 1 unless last_page? || out_of_range?
 >>>>>>> FETCH_HEAD
+=======
+      current_page + 1 unless last_page? || out_of_range?
+>>>>>>> FETCH_HEAD
     end
 
     # Previous page number in the collection
     def prev_page
+<<<<<<< HEAD
 <<<<<<< HEAD
       if @current_page
         cpage = @current_page
@@ -73,6 +78,9 @@ module Kaminari
       end
       
       cpage - 1 unless first_page?
+=======
+      current_page - 1 unless first_page? || out_of_range?
+>>>>>>> FETCH_HEAD
 =======
       current_page - 1 unless first_page? || out_of_range?
 >>>>>>> FETCH_HEAD
@@ -92,6 +100,7 @@ module Kaminari
     # Last page of the collection?
     def last_page?
 <<<<<<< HEAD
+<<<<<<< HEAD
       if @current_page
         cpage = @current_page
       else
@@ -99,6 +108,9 @@ module Kaminari
       end
       
       cpage >= total_pages
+=======
+      current_page == total_pages
+>>>>>>> FETCH_HEAD
 =======
       current_page == total_pages
 >>>>>>> FETCH_HEAD
