@@ -50,52 +50,24 @@ module Kaminari
 
     # Next page number in the collection
     def next_page
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> FETCH_HEAD
       if @current_page
         cpage = @current_page
       else
         cpage = current_page
       end
       
-      cpage + 1 unless last_page?
-<<<<<<< HEAD
-=======
-      current_page + 1 unless last_page? || out_of_range?
->>>>>>> FETCH_HEAD
-=======
-      current_page + 1 unless last_page? || out_of_range?
->>>>>>> FETCH_HEAD
-=======
->>>>>>> FETCH_HEAD
+      cpage + 1 unless last_page? || out_of_range?
     end
 
     # Previous page number in the collection
     def prev_page
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> FETCH_HEAD
       if @current_page
         cpage = @current_page
       else
         cpage = current_page
       end
       
-      cpage - 1 unless first_page?
-<<<<<<< HEAD
-=======
-      current_page - 1 unless first_page? || out_of_range?
->>>>>>> FETCH_HEAD
-=======
-      current_page - 1 unless first_page? || out_of_range?
->>>>>>> FETCH_HEAD
-=======
->>>>>>> FETCH_HEAD
+      cpage - 1 unless first_page? || out_of_range?
     end
 
     # First page of the collection?
@@ -111,27 +83,13 @@ module Kaminari
 
     # Last page of the collection?
     def last_page?
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> FETCH_HEAD
       if @current_page
         cpage = @current_page
       else
         cpage = current_page
       end
       
-      cpage >= total_pages
-<<<<<<< HEAD
-=======
-      current_page == total_pages
->>>>>>> FETCH_HEAD
-=======
-      current_page == total_pages
->>>>>>> FETCH_HEAD
-=======
->>>>>>> FETCH_HEAD
+      cpage == total_pages
     end
 
     # Out of range of the collection?
